@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Liberty Laser Co.</title>
   <link rel="stylesheet" href="style.css">
+  <!-- AOS Animate On Scroll Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  <header>
+  <header data-aos="fade-down">
     <div class="nav-container">
       <img src="images/logo.png" alt="Liberty Laser Co. Logo" class="logo">
       <nav>
@@ -16,13 +18,13 @@
           <li><a href="#products">Shop</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#support">Support</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <section class="hero" id="home">
+  <section class="hero" id="home" data-aos="fade-up">
     <h1>Crafted with Purpose.<br>Engraved with Precision.</h1>
     <div class="hero-buttons">
       <a href="#products" class="btn">Shop Tumblers</a>
@@ -30,60 +32,65 @@
     </div>
   </section>
 
-  <section class="products" id="products">
+  <section class="products" id="products" data-aos="fade-up">
     <h2>Featured Products</h2>
     <div class="product-grid">
-      <div class="product-card">
-        <img src="images/tumblers.jpg" alt="Tumblers">
-        <h3>Tumblers</h3>
+      <div class="product-card" data-aos="zoom-in">
+        <img src="images/faith-tumblers.jpg" alt="Faith Tumblers">
+        <h3>Faith Tumblers</h3>
         <p>From $25</p>
       </div>
-      <div class="product-card">
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
         <img src="images/cutting-board.jpg" alt="Cutting Boards">
         <h3>Cutting Boards</h3>
         <p>From $30</p>
       </div>
-      <div class="product-card">
-        <img src="images/wallet.jpg" alt="Wallets">
-        <h3>Wallets</h3>
-        <p>$15</p>
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
+        <img src="images/patriotic-tumblers.jpg" alt="Patriotic Tumblers">
+        <h3>Patriotic Tumblers</h3>
+        <p>From $25</p>
       </div>
-      <div class="product-card">
-        <img src="images/custom-gifts.jpg" alt="Custom Gifts">
-        <h3>Custom Gifts</h3>
-        <p>Varies</p>
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="300">
+        <img src="images/outdoors-tumblers.jpg" alt="Outdoor Tumblers">
+        <h3>Outdoor Tumblers</h3>
+        <p>From $25</p>
       </div>
     </div>
   </section>
 
-  <section class="gallery" id="gallery">
+  <section class="gallery" id="gallery" data-aos="fade-up">
     <h2>Gallery</h2>
     <div class="gallery-grid">
-      <img src="images/faith-tumblers.jpg" alt="Faith Tumblers">
-      <img src="images/patriotic-tumblers.jpg" alt="Patriotic Tumblers">
-      <img src="images/outdoors-tumblers.jpg" alt="Outdoors Tumblers">
-      <img src="images/mhu-tumbler.jpg" alt="Custom Mars Hill Tumbler">
+      <img src="images/faith-tumblers.jpg" alt="Faith Tumblers" data-aos="zoom-in">
+      <img src="images/outdoors-tumblers.jpg" alt="Outdoor Tumblers" data-aos="zoom-in" data-aos-delay="100">
+      <img src="images/patriotic-tumblers.jpg" alt="Patriotic Tumblers" data-aos="zoom-in" data-aos-delay="200">
+      <img src="images/mhu-tumbler.jpg" alt="Mars Hill Tumbler" data-aos="zoom-in" data-aos-delay="300">
     </div>
   </section>
 
-  <section class="about" id="about">
+  <section class="about" id="about" data-aos="fade-up">
     <h2>About Us</h2>
     <p>At Liberty Laser Co., we believe in crafting more than products—we engrave memories, values, and identity. Whether it’s a gift for a veteran, a tribute to your faith, or a memento for your alma mater, we laser with purpose.</p>
   </section>
 
-  <section class="contact" id="contact">
-    <h2>Start a Custom Order</h2>
-    <form action="#">
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <textarea placeholder="Tell us what you need..." required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+  <section class="support" id="support" data-aos="fade-up">
+    <h2>College Support</h2>
+    <div class="support-content">
+      <img src="images/college-support.jpg" alt="Liberty Laser Co. College Support Check" style="width:100%; max-width:600px; border-radius:12px; display:block; margin:auto;">
+      <p style="text-align:center; max-width:700px; margin:1rem auto; font-size:1.1rem;">
+        Proudly supported by the Center for Entrepreneurial Leadership at Mars Hill University. Liberty Laser Co. is a student-run business turning passion into precision.
+      </p>
+    </div>
   </section>
 
-  <footer>
+  <footer data-aos="fade-up">
     <p>&copy; 2025 Liberty Laser Co. | Built with pride and precision</p>
   </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
-
