@@ -17,9 +17,6 @@
       font-family: 'Inter', sans-serif;
       margin: 0;
     }
-    section:nth-child(even) {
-      background-color: #f0f4ff;
-    }
     header {
       position: sticky;
       top: 0;
@@ -30,6 +27,7 @@
     }
     .nav-container {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       padding: 1rem 2rem;
@@ -38,121 +36,101 @@
       display: flex;
       align-items: center;
       gap: 1rem;
+      flex: 1 1 auto;
     }
     .nav-container .brand h1 {
       font-size: 1.25rem;
       color: #003366;
       margin: 0;
     }
-    .nav-container nav ul {
+    nav ul {
       list-style: none;
       display: flex;
-      gap: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-left: 0;
+      margin: 0;
     }
     nav a {
       text-decoration: none;
       color: #333;
       font-weight: 600;
+      white-space: nowrap;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #003366;
+      margin: 4px 0;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .menu-toggle.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: white;
+        padding: 1rem;
+        margin-top: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      }
+      nav ul.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: auto;
     }
     .hero {
       text-align: center;
-      padding: 4rem 1rem 2rem;
     }
-    .hero img {
-      max-width: 300px;
-      margin: 2rem auto;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 600;
+    .hero h2 {
+      font-size: 2rem;
       color: #003366;
-    }
-    .hero-buttons {
-      margin-top: 1rem;
-    }
-    .btn, .btn-outline {
-      padding: 0.75rem 1.5rem;
-      margin: 0.5rem;
-      font-weight: 600;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    .btn {
-      background-color: #003366;
-      color: white;
-      border: none;
-    }
-    .btn-outline {
-      border: 2px solid #003366;
-      color: #003366;
-    }
-    .btn-outline:hover {
-      background-color: #003366;
-      color: white;
     }
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      padding: 2rem;
     }
     .product-card {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       text-align: center;
     }
     .product-card img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-    }
-    .product-card h3 {
-      margin-top: 1rem;
-      color: #003366;
-    }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      padding: 2rem;
-    }
-    .gallery-grid img {
-      width: 100%;
-      border-radius: 10px;
-      object-fit: cover;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
     }
     footer {
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      max-width: 500px;
-      margin: 1rem auto;
-      gap: 1rem;
-    }
-    input, textarea {
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-    button[type="submit"] {
-      background-color: #003366;
-      color: white;
-      border: none;
-      padding: 0.75rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
+      background-color: #f0f4ff;
     }
   </style>
 </head>
@@ -163,16 +141,15 @@
         <img src="images/logo.png" alt="Liberty Laser Co. Logo" class="logo" style="height: 40px;">
         <h1>Liberty Laser Co.</h1>
       </div>
+      <div class="menu-toggle" onclick="toggleMenu(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <nav>
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#products">Shop</a>
-            <ul>
-              <li><a href="tumblers.html">Tumblers</a></li>
-              <li><a href="boards.html">Cutting Boards</a></li>
-              <li><a href="custom.html">Custom Projects</a></li>
-            </ul>
-          </li>
+          <li><a href="#products">Shop</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -181,68 +158,69 @@
     </div>
   </header>
 
-  <section class="hero" id="home" data-aos="fade-up">
-    <h1>Turn Imagination Into Keepsakes</h1>
-    <img src="images/mug-hero.jpeg" alt="Custom Tumbler">
-    <div class="hero-buttons">
-      <a href="#products" class="btn">Shop Now</a>
-      <a href="#contact" class="btn-outline">Get a Quote</a>
-    </div>
+  <section id="home" class="hero" data-aos="fade-up">
+    <h2>Crafted with Purpose. Engraved with Precision.</h2>
+    <p>From Burnsville, NC — bringing your imagination to life with custom gifts that last a lifetime.</p>
   </section>
 
-  <section class="products" id="products" data-aos="fade-up">
-    <h2 style="text-align: center;">Our Products</h2>
+  <section id="products" data-aos="fade-up">
+    <h2>Our Products</h2>
     <div class="product-grid">
-      <div class="product-card" data-aos="zoom-in">
-        <a href="tumblers.html"><img src="images/tumbler-display.jpeg" alt="Custom Tumblers"></a>
-        <h3><a href="tumblers.html">Tumblers</a></h3>
-        <p>$25 - Custom engraving & colors</p>
+      <div class="product-card">
+        <img src="images/tumbler-display.jpeg" alt="Tumblers">
+        <h3>Tumblers</h3>
+        <p>Custom engraved, color options available. $25 each.</p>
       </div>
-      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
-        <a href="boards.html"><img src="images/board.jpeg" alt="Engraved Cutting Board"></a>
-        <h3><a href="boards.html">Cutting Boards</a></h3>
-        <p>$30 - Personalized gifts</p>
+      <div class="product-card">
+        <img src="images/board.jpeg" alt="Cutting Boards">
+        <h3>Cutting Boards</h3>
+        <p>Perfect for gifts and kitchens. $30 each with custom message.</p>
       </div>
-      <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
-        <a href="custom.html"><img src="images/tree.jpeg" alt="Custom Project"></a>
-        <h3><a href="custom.html">Custom Projects</a></h3>
-        <p>Pricing varies - Your idea engraved</p>
+      <div class="product-card">
+        <img src="images/tree.jpeg" alt="Custom Projects">
+        <h3>Custom Projects</h3>
+        <p>Let us bring your vision to life. Pricing varies by design.</p>
       </div>
     </div>
   </section>
 
-  <section class="gallery" id="gallery" data-aos="fade-up">
-    <h2 style="text-align: center;">Gallery</h2>
-    <div class="gallery-grid">
+  <section id="gallery" data-aos="fade-up">
+    <h2>Gallery</h2>
+    <div class="product-grid">
+      <img src="images/faith-tumblers.jpg" alt="Faith Tumblers">
+      <img src="images/patriotic-tumblers.jpg" alt="Patriotic Tumblers">
+      <img src="images/outdoors-tumblers.jpg" alt="Outdoors Tumblers">
       <img src="images/wallet.jpeg" alt="Custom Wallet">
-      <img src="images/board.jpeg" alt="Custom Cutting Board">
-      <img src="images/tree.jpeg" alt="Family Tree Sign">
     </div>
   </section>
 
-  <section class="about" id="about" data-aos="fade-up">
-    <h2 style="text-align: center;">About Us</h2>
-    <p style="max-width: 700px; margin: auto; padding: 0 1rem 2rem; text-align: center; font-size: 1.1rem;">
-      At Liberty Laser Co., we don’t just engrave gifts—we bring your imagination to life. From the small town of Burnsville, NC, we carry a heritage of craftsmen who take pride in every cut, carve, and curve. Whether it’s a birthday, a retirement, or a tribute to someone you love, our passion is making something you can hold in your hand—and cherish for life.
+  <section id="about" data-aos="fade-up">
+    <h2>About Us</h2>
+    <p>
+      Liberty Laser Co. is a student-run business out of Burnsville, NC with a legacy of craftsmanship. We're proud partners with the Center for Entrepreneurial Leadership at Mars Hill University.
     </p>
+    <img src="images/college-support.jpg" alt="College Partnership" style="max-width:100%; margin-top:1rem; border-radius:12px;">
   </section>
 
   <section id="contact" data-aos="fade-up">
-    <h2 style="text-align: center;">Contact & Custom Orders</h2>
-    <p style="text-align: center; font-size: 1.1rem;">Email: <a href="mailto:libertylaserco@gmail.com">libertylaserco@gmail.com</a> | Phone: (828) 284-7021 | Instagram: <a href="https://instagram.com/libertylaserco" target="_blank">@libertylaserco</a></p>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Tell us what you're looking for..." required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:libertylaserco@gmail.com">libertylaserco@gmail.com</a></p>
+    <p>Phone: (828) 284-7021</p>
+    <p>Instagram: <a href="https://instagram.com/libertylaserco" target="_blank">@libertylaserco</a></p>
   </section>
 
-  <footer data-aos="fade-up">
-    <p>&copy; 2025 Liberty Laser Co. | Crafted in Burnsville, NC</p>
+  <footer>
+    &copy; 2025 Liberty Laser Co. | Crafted in Burnsville, NC
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <script>
+    AOS.init();
+
+    function toggleMenu(toggle) {
+      toggle.classList.toggle('open');
+      document.querySelector('nav ul').classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
