@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Liberty Laser Co.</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="animations/fire.css">
-  <link rel="stylesheet" href="animations/smoke.css">
-  <link rel="stylesheet" href="animations/hover-effects.css">
-  <link rel="stylesheet" href="animations/laser.css">
-  <link rel="stylesheet" href="animations/ash.css">
   <link rel="icon" href="images/logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -22,25 +17,140 @@
       font-family: 'Inter', sans-serif;
       margin: 0;
     }
-    /* Keep your internal styling here if needed */
+    header {
+      position: sticky;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 1000;
+    }
+    .nav-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+    .nav-container .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1 1 auto;
+    }
+    .nav-container .brand h1 {
+      font-size: 1.25rem;
+      color: #003366;
+      margin: 0;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-left: 0;
+      margin: 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #003366;
+      margin: 4px 0;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .menu-toggle.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: white;
+        padding: 1rem;
+        margin-top: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      }
+      nav ul.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+    .hero {
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 2rem;
+      color: #003366;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .product-card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background-color: #f0f4ff;
+    }
   </style>
 </head>
 <body>
-  <script>
-    for (let i = 0; i < 20; i++) {
-      const ash = document.createElement('div');
-      ash.classList.add('ash');
-      ash.style.left = Math.random() * 100 + 'vw';
-      ash.style.animationDuration = (Math.random() * 10 + 5) + 's';
-      document.body.appendChild(ash);
-    }
-  </script>
-
   <header data-aos="fade-down">
     <div class="nav-container">
       <div class="brand">
         <img src="images/logo.png" alt="Liberty Laser Co. Logo" class="logo" style="height: 40px;">
-        <h1 class="fire-glow">Liberty Laser Co.</h1>
+        <h1>Liberty Laser Co.</h1>
       </div>
       <div class="menu-toggle" onclick="toggleMenu(this)">
         <span></span>
@@ -62,24 +172,24 @@
   </header>
 
   <section id="home" class="hero" data-aos="fade-up">
-    <h2 class="laser-reveal">Crafted with Purpose. Engraved with Precision.</h2>
+    <h2>Crafted with Purpose. Engraved with Precision.</h2>
     <p>From Burnsville, NC — bringing your imagination to life with custom gifts that last a lifetime.</p>
   </section>
 
   <section id="products" data-aos="fade-up">
-    <h2 class="fire-glow">Our Products</h2>
+    <h2>Our Products</h2>
     <div class="product-grid">
-      <div class="product-card hover-etch smoke-trail">
+      <div class="product-card">
         <a href="tumblers.html"><img src="images/tumbler-display.jpeg" alt="Tumblers"></a>
         <h3><a href="tumblers.html" style="text-decoration: none; color: #003366;">Tumblers</a></h3>
         <p>Custom engraved, color options available. $25 each.</p>
       </div>
-      <div class="product-card hover-etch smoke-trail">
+      <div class="product-card">
         <img src="images/board.jpeg" alt="Cutting Boards">
         <h3>Cutting Boards</h3>
         <p>Perfect for gifts and kitchens. $30 each with custom message.</p>
       </div>
-      <div class="product-card hover-etch smoke-trail">
+      <div class="product-card">
         <img src="images/tree.jpeg" alt="Custom Projects">
         <h3>Custom Projects</h3>
         <p>Let us bring your vision to life. Pricing varies by design.</p>
@@ -88,7 +198,7 @@
   </section>
 
   <section id="gallery" data-aos="fade-up">
-    <h2 class="laser-reveal">Gallery</h2>
+    <h2>Gallery</h2>
     <div class="gallery-grid">
       <img src="images/faith-tumblers.jpg" alt="Faith Tumblers">
       <img src="images/patriotic-tumblers.jpg" alt="Patriotic Tumblers">
@@ -98,7 +208,7 @@
   </section>
 
   <section id="about" data-aos="fade-up">
-    <h2 class="fire-glow">About Us</h2>
+    <h2>About Us</h2>
     <p>
       Liberty Laser Co. is a student-run business out of Burnsville, NC with a legacy of craftsmanship. We're proud partners with the Center for Entrepreneurial Leadership at Mars Hill University.
     </p>
@@ -106,7 +216,7 @@
   </section>
 
   <section id="contact" data-aos="fade-up">
-    <h2 class="laser-reveal">Contact</h2>
+    <h2>Contact</h2>
     <p>Email: <a href="mailto:libertylaserco@gmail.com">libertylaserco@gmail.com</a></p>
     <p>Phone: (828) 284-7021</p>
     <p>Instagram: <a href="https://instagram.com/libertylaserco" target="_blank">@libertylaserco</a></p>
