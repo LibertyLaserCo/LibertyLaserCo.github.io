@@ -5,17 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Liberty Laser Co.</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <!-- AOS Animate On Scroll Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     body {
       background-color: #f9f9f9;
+      font-family: 'Inter', sans-serif;
     }
     section:nth-child(even) {
       background-color: #f0f4ff;
     }
-    .product-card img,
-    .gallery-grid img {
+    .nav-container {
+      position: sticky;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 1000;
+    }
+    .product-card, .gallery-grid img {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+    }
+    .product-card:hover, .gallery-grid img:hover {
+      transform: scale(1.03);
+    }
+    .product-card img, .gallery-grid img {
       object-fit: cover;
       aspect-ratio: 4 / 5;
       width: 100%;
@@ -23,6 +41,15 @@
     }
     .gallery-grid {
       text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
     .gallery-grid a {
       display: inline-block;
@@ -38,6 +65,31 @@
     .gallery-grid a:hover {
       background-color: #003366;
       color: #fff;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      margin: 1rem auto;
+      gap: 1rem;
+    }
+    input, textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    button[type="submit"] {
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button[type="submit"]:hover {
+      background-color: #002244;
     }
   </style>
 </head>
@@ -114,6 +166,12 @@
   <section id="contact" data-aos="fade-up">
     <h2 style="text-align: center;">Contact Us</h2>
     <p style="text-align: center; font-size: 1.1rem;">Email: <a href="mailto:libertylaserco@gmail.com">libertylaserco@gmail.com</a></p>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Tell us what you're looking for..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
   <footer data-aos="fade-up">
