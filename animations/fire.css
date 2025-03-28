@@ -1,0 +1,10 @@
+
+@keyframes fireGlow {
+  0%, 100% { text-shadow: 0 0 10px #ff6a00, 0 0 20px #ff3c00; }
+  50% { text-shadow: 0 0 20px #ffa500, 0 0 30px #ff3c00; }
+}
+
+.fire-glow {
+  animation: fireGlow 2s infinite alternate;
+  color: #ff3c00;
+}

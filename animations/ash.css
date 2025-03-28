@@ -1,0 +1,17 @@
+
+@keyframes ashFall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+.ash {
+  position: fixed;
+  top: -20px;
+  width: 4px;
+  height: 4px;
+  background: #ccc;
+  border-radius: 50%;
+  animation: ashFall linear infinite;
+  opacity: 0;
+}
