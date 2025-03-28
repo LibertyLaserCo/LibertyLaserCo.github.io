@@ -9,6 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       background-color: #f9f9f9;
       font-family: 'Inter', sans-serif;
@@ -30,6 +33,16 @@
       align-items: center;
       justify-content: space-between;
       padding: 1rem 2rem;
+    }
+    .nav-container .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .nav-container .brand h1 {
+      font-size: 1.25rem;
+      color: #003366;
+      margin: 0;
     }
     .nav-container nav ul {
       list-style: none;
@@ -144,13 +157,22 @@
   </style>
 </head>
 <body>
-  <header>
+  <header data-aos="fade-down">
     <div class="nav-container">
-      <img src="images/logo.png" alt="Liberty Laser Co. Logo" class="logo" style="height: 40px;">
+      <div class="brand">
+        <img src="images/logo.png" alt="Liberty Laser Co. Logo" class="logo" style="height: 40px;">
+        <h1>Liberty Laser Co.</h1>
+      </div>
       <nav>
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#products">Shop</a></li>
+          <li><a href="#products">Shop</a>
+            <ul>
+              <li><a href="tumblers.html">Tumblers</a></li>
+              <li><a href="boards.html">Cutting Boards</a></li>
+              <li><a href="custom.html">Custom Projects</a></li>
+            </ul>
+          </li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -159,7 +181,7 @@
     </div>
   </header>
 
-  <section class="hero" id="home">
+  <section class="hero" id="home" data-aos="fade-up">
     <h1>Turn Imagination Into Keepsakes</h1>
     <img src="images/mug-hero.jpeg" alt="Custom Tumbler">
     <div class="hero-buttons">
@@ -168,28 +190,28 @@
     </div>
   </section>
 
-  <section class="products" id="products">
+  <section class="products" id="products" data-aos="fade-up">
     <h2 style="text-align: center;">Our Products</h2>
     <div class="product-grid">
-      <div class="product-card">
-        <img src="images/tumbler-display.jpeg" alt="Custom Tumblers">
-        <h3>Tumblers</h3>
-        <p>$25 - Includes custom engraving + color options</p>
+      <div class="product-card" data-aos="zoom-in">
+        <a href="tumblers.html"><img src="images/tumbler-display.jpeg" alt="Custom Tumblers"></a>
+        <h3><a href="tumblers.html">Tumblers</a></h3>
+        <p>$25 - Custom engraving & colors</p>
       </div>
-      <div class="product-card">
-        <img src="images/board.jpeg" alt="Engraved Cutting Board">
-        <h3>Cutting Boards</h3>
-        <p>$30 - Personalized for the perfect kitchen gift</p>
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+        <a href="boards.html"><img src="images/board.jpeg" alt="Engraved Cutting Board"></a>
+        <h3><a href="boards.html">Cutting Boards</a></h3>
+        <p>$30 - Personalized gifts</p>
       </div>
-      <div class="product-card">
-        <img src="images/tree.jpeg" alt="Custom Project">
-        <h3>Custom Projects</h3>
-        <p>Pricing Varies - We'll bring your idea to life</p>
+      <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
+        <a href="custom.html"><img src="images/tree.jpeg" alt="Custom Project"></a>
+        <h3><a href="custom.html">Custom Projects</a></h3>
+        <p>Pricing varies - Your idea engraved</p>
       </div>
     </div>
   </section>
 
-  <section class="gallery" id="gallery">
+  <section class="gallery" id="gallery" data-aos="fade-up">
     <h2 style="text-align: center;">Gallery</h2>
     <div class="gallery-grid">
       <img src="images/wallet.jpeg" alt="Custom Wallet">
@@ -198,14 +220,14 @@
     </div>
   </section>
 
-  <section class="about" id="about">
+  <section class="about" id="about" data-aos="fade-up">
     <h2 style="text-align: center;">About Us</h2>
     <p style="max-width: 700px; margin: auto; padding: 0 1rem 2rem; text-align: center; font-size: 1.1rem;">
       At Liberty Laser Co., we don’t just engrave gifts—we bring your imagination to life. From the small town of Burnsville, NC, we carry a heritage of craftsmen who take pride in every cut, carve, and curve. Whether it’s a birthday, a retirement, or a tribute to someone you love, our passion is making something you can hold in your hand—and cherish for life.
     </p>
   </section>
 
-  <section id="contact">
+  <section id="contact" data-aos="fade-up">
     <h2 style="text-align: center;">Contact & Custom Orders</h2>
     <p style="text-align: center; font-size: 1.1rem;">Email: <a href="mailto:libertylaserco@gmail.com">libertylaserco@gmail.com</a> | Phone: (828) 284-7021 | Instagram: <a href="https://instagram.com/libertylaserco" target="_blank">@libertylaserco</a></p>
     <form>
@@ -216,7 +238,7 @@
     </form>
   </section>
 
-  <footer>
+  <footer data-aos="fade-up">
     <p>&copy; 2025 Liberty Laser Co. | Crafted in Burnsville, NC</p>
   </footer>
 
